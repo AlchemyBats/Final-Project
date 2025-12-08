@@ -1,3 +1,5 @@
+#This is the manual method code. It doesn't generate the sentiment score. It only counts the positve and negative keywords.
+
 LABEL_KEYWORDS = {
     "positive": [
         # Revenue / sales growth
@@ -305,3 +307,4 @@ with open(output_csv, "w", newline="", encoding="utf-8") as f:
     writer.writerows(results)
 
 print("Saved: manual_summaries/results.csv")
+
