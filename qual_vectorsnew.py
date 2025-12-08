@@ -1,3 +1,5 @@
+#This code handles the word-embedding method. It generates the sentiment score for this method.
+
 import os
 import numpy as np
 import pandas as pd
@@ -46,8 +48,6 @@ print("Computing sentiment for each report...")
 for file in sorted(os.listdir("reports_formatted")):
     if not file.endswith(".txt"):
         continue
-
-    # file is like "lmt_report_17-02-09.txt"
     # extract only the date portion
     date_str = file.replace("lmt_report_", "").replace(".txt", "")
 
@@ -66,7 +66,7 @@ for file in sorted(os.listdir("reports_formatted")):
     print(f"{file}: sentiment = {avg_sent:.4f}")
 
 # -------------------------------------------------------
-# 4. Save results EXACTLY in required format
+# 4. Save results 
 # -------------------------------------------------------
 os.makedirs("vector_summaries", exist_ok=True)
 
@@ -75,3 +75,4 @@ df = pd.DataFrame(results, columns=["date", "avg_sentiment"])
 df.to_csv("vector_summaries/results.csv", index=False)
 
 print("Saved vector_summaries/results.csv")
+
