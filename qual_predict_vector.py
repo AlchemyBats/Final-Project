@@ -1,3 +1,4 @@
+#This code handles regression analysis on the word-embedding scores.
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
@@ -134,4 +135,5 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
 
