@@ -1,9 +1,11 @@
+#This code is used to clean the SEC pdf reports. It is not used in the analysis or results of the program. The data I've directed you to download in the readme is cleaned.
+
 import os
 import re
 import pdfplumber
 from datetime import datetime
 
-# modification: search the last 5 lines for the date
+
 input_folder = "reports"
 output_folder = "reports_formatted"
 os.makedirs(output_folder, exist_ok=True)
@@ -107,3 +109,4 @@ for filename in os.listdir(input_folder):
     print(f"Saved → {out_name}")
 
 print("Done.")
+
