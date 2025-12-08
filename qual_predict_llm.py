@@ -1,19 +1,21 @@
+#This code handles the analysis on the LLM scores
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import numpy as np
 
-print("Loading LLM sentiment summary data...")
+#print("Loading LLM sentiment summary data...")
 summary = pd.read_csv("llm_summaries/sentiment_results.csv")  
 
-print("Formatting summary dates (yy-mm-dd → yyyy-mm-dd)...")
+#print("Formatting summary dates (yy-mm-dd → yyyy-mm-dd)...")
 summary["Date"] = pd.to_datetime(summary["date"], format="%y-%m-%d")
 
-print("Loading stock price data...")
+#print("Loading stock price data...")
 stocks = pd.read_csv("stocks/LMT_2010_2025.csv")
 
-print("Converting stock columns to numeric...")
+#print("Converting stock columns to numeric...")
 numeric_cols = ["Close", "High", "Low", "Open", "Volume"]
 for col in numeric_cols:
     stocks[col] = pd.to_numeric(stocks[col], errors="coerce")
@@ -21,7 +23,7 @@ for col in numeric_cols:
 stocks["Date"] = pd.to_datetime(stocks["Date"])
 stocks = stocks.sort_values("Date").set_index("Date")
 
-print("Computing price changes around each report date...")
+#print("Computing price changes around each report date...")
 price_changes = []
 
 for _, row in summary.iterrows():
@@ -99,7 +101,7 @@ y_line = model.predict(x_line.reshape(-1,1))
 
 plt.plot(x_line, y_line, linewidth=3, label="Regression Line")
 
-plt.title("Linear Regression Fit (Training Data)")
+plt.title("LLM -- Linear Regression Fit")
 plt.xlabel("Average Sentiment")
 plt.ylabel("Percent Change")
 plt.legend()
@@ -120,7 +122,7 @@ mae = mean_absolute_error(y_test, test["predicted_change"])
 mse = mean_squared_error(y_test, test["predicted_change"])
 r2  = r2_score(y_test, test["predicted_change"])
 
-print("\n--- Prediction Accuracy ---")
+print("\n--- LLM Prediction Accuracy ---")
 print(f"MAE: {mae:.4f}")
 print(f"MSE: {mse:.4f}")
 print(f"R²:  {r2:.4f}")
@@ -131,10 +133,11 @@ print(f"R²:  {r2:.4f}")
 plt.figure(figsize=(10,6))
 plt.plot(test["Date"], y_test, label="Actual Change", linewidth=2)
 plt.plot(test["Date"], test["predicted_change"], label="Predicted Change", linewidth=2)
-plt.title("Actual vs Predicted Stock Price Change (20% Future Data)")
+plt.title("LLM -- Actual vs Predicted Stock Price Change")
 plt.xlabel("Date")
 plt.ylabel("Percent Price Change")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
+
 plt.show()
