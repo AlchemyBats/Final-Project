@@ -1,0 +1,33 @@
+ 
+
+---Summary Part 1---
+
+ 0.65 
+
+---Summary Part 2---
+
+ 0.3 
+
+---Summary Part 3---
+
+ 0.35 
+
+---Summary Part 4---
+
+ -0.25 
+
+---Summary Part 5---
+
+ -0.1 
+
+---Summary Part 6---
+
+ 0.65 
+
+---Summary Part 7---
+
+ 0.35 
+
+---Summary Part 8---
+
+ 0.65
