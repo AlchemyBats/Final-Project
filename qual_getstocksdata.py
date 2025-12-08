@@ -1,3 +1,5 @@
+#This downloads the stock data I used. It is not needed in the analysis or results.
+
 import os
 import yfinance as yf
 import pandas as pd
@@ -15,3 +17,4 @@ cleaned = data.dropna().reset_index()
 cleaned.to_csv("stocks/LMT_1995_2025.csv", index=False)
 
 print("Data downloaded, cleaned, and saved to stocks/LMT_2010_2025.csv")
+
