@@ -1,3 +1,5 @@
+#This is the LLM method code. It generates the sentiment for the LLM method.
+
 import ollama
 import pandas as pd
 import os
@@ -69,3 +71,4 @@ df = pd.DataFrame(results)
 df.to_csv("llm_summaries/sentiment_results.csv", index=False)
 
 print("Saved llm_summaries/sentiment_results.csv")
+
