@@ -12,7 +12,7 @@ summary = pd.read_csv("vector_summaries/results.csv")
 summary["Date"] = pd.to_datetime(summary["date"], format="%y-%m-%d")
 
 #print("Loading stock price data...")
-stocks = pd.read_csv("stocks/LMT_2010_2025.csv")
+stocks = pd.read_csv("stocks/LMT_1995_2025.csv")
 
 #print("Converting stock columns to numeric...")
 numeric_cols = ["Close", "High", "Low", "Open", "Volume"]
@@ -135,5 +135,6 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
 
 
